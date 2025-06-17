@@ -1,0 +1,286 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+@functions {
+    // Optional: use this to display the budget in different colors based on its value.
+    public string GetBadgeClass(decimal budget)
+    {
+        // Example: budgets greater than 50,000 get a green badge, otherwise a secondary badge.
+        return budget > 50000 ? "badge-success" : "badge-secondary";
+    }
+  
+}
+
+<style>
+    .sidebar {
+        width: 250px;
+        position: fixed;
+        height: 100vh;
+        overflow-y: auto;
+        z-index: 1000;
+    }
+
+    .content {
+        margin-left: 260px;
+    }
+
+    .stats-card {
+        background: #fff;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+        .stats-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stats-card h5 {
+            color: #6c757d;
+            margin-bottom: 10px;
+        }
+
+        .stats-card h3 {
+            font-weight: bold;
+            color: #343a40;
+        }
+
+    .glass-card {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .chart-container {
+        width: 250px;
+        margin: auto;
+    }
+
+    .table {
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .booking-row:hover, .task-row:hover {
+        background: #f8f9fa;
+        transition: 0.3s;
+    }
+
+    .status-badge {
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    .badge-success {
+        background: #28a745;
+        color: white;
+    }
+
+    .badge-warning {
+        background: #ffc107;
+        color: black;
+    }
+
+    .badge-danger {
+        background: #dc3545;
+        color: white;
+    }
+
+    .badge-secondary {
+        background: #6c757d;
+        color: white;
+    }
+</style>
+
+<div>
+    <main class="content p-4" style="margin-left: 50px; width: calc(100% - 50px);">
+        <section class="section dashboard">
+            <div class="row gx-0">
+                <div class="row">
+                    <!-- Stats Cards -->
+                    <div class="col-md-3">
+                        <div class="card stats-card text-center">
+                            <h5>Total Weddings</h5>
+                            <h3>@ViewBag.TotalWeddings</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card stats-card text-center">
+                            <h5>Total Clients</h5>
+                            <h3>@ViewBag.TotalClients</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card stats-card text-center">
+                            <h5>Total Vendors</h5>
+                            <h3>@ViewBag.TotalVendors</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card stats-card text-center">
+                            <h5>Total Feedbacks</h5>
+                            <h3>@ViewBag.TotalFeedbacks</h3>
+                        </div>
+                    </div>
+
+                    <!-- Recent Weddings Table -->
+                    <h4 class="mt-4 fw-bold">Recent Weddings</h4>
+                    <table class="table table-hover shadow-sm rounded">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Wedding ID</th>
+                                <th>Bride Name</th>
+                                <th>Groom Name</th>
+                                <th>Wedding Date</th>
+                                <th>Wedding Location</th>
+                                <th>Guests</th>
+                                <th>Budget</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (ViewBag.RecentWeddings != null)
+                            {
+                                foreach (var wedding in ViewBag.RecentWeddings)
+                                {
+                                    <tr class="wedding-row">
+                                        <td>@wedding.WeddingID</td>
+                                        <td>@wedding.Bride</td>
+                                        <td>@wedding.Groom</td>
+                                        <td>@wedding.WeddingDate.ToShortDateString()</td>
+                                        <td>@wedding.WeddingLocation</td>
+                                        <td>@wedding.NumberOfGuests</td>
+                                        <td>
+                                            <span class="badge @GetBadgeClass(wedding.Budget)">
+                                                @wedding.Budget.ToString("C")
+                                            </span>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+
+                    <!-- Recent Tasks Table -->
+                    <h4 class="mt-4 fw-bold">Recent Tasks</h4>
+                    <table class="table table-hover shadow-sm rounded">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Task ID</th>
+                                <th>Wedding ID</th>
+                                <th>Wedding Date</th>
+                                <th>Task Description</th>
+                                <th>Assigned To</th>
+                                <th>Deadline</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (ViewBag.RecentTasks != null)
+                            {
+                                foreach (var task in ViewBag.RecentTasks)
+                                {
+                                    <tr class="task-row">
+                                        <td>@task.TaskID</td>
+                                        <td>@task.WeddingID</td>
+                                        <td>@task.WeddingDate.ToShortDateString()</td>
+                                        <td>@task.TaskDescription</td>
+                                        <td>@task.AssignedTo</td>
+                                        <td>@task.Deadline.ToShortDateString()</td>
+                                        <td>
+                                            <span class="badge @(task.Status == "Completed" ? "bg-success" : task.Status == "In Progress" ? "bg-warning" : "bg-danger")">
+                                                @task.Status
+                                            </span>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+
+                    <!-- Popular Venues Section (if available) -->
+                    <h4 class="mt-4 fw-bold">Popular Venues</h4>
+                    <div class="row">
+                        @if (ViewBag.Venues != null)
+                        {
+                            foreach (var venue in ViewBag.Venues)
+                            {
+                                <div class="col-md-4">
+                                    <div class="card glass-card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">@venue.VenueName</h5>
+                                            <p>@venue.Description</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+
+                    <!-- Wedding Overview Doughnut Chart -->
+                    <div class="container mt-5">
+                        <div class="card glass-card text-center">
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold">Your Wedding Overview</h5>
+                                <div class="chart-container">
+                                    <canvas id="weddingChart"></canvas>
+                                </div>
+                                <p class="mt-2 fs-4 fw-bold" id="chartLabel">70%</p>
+                                <div class="d-flex justify-content-center gap-3">
+                                    <span class="badge bg-success">Completed</span>
+                                    <span class="badge bg-warning text-dark">Incomplete</span>
+                                    <span class="badge bg-danger">Cancelled</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+
+@section Scripts {
+    <!-- Make sure Chart.js is included in your layout or include it here if not already loaded -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+
+    <script>
+        $(document).ready(function () {
+            setTimeout(function () {
+                $('.alert-dismissible').fadeOut('slow');
+            }, 3000);
+        });
+
+        // Optional: Function to confirm deletion (if needed)
+        function confirmDelete() {
+            return confirm('Are You Sure You Want To Delete This Wedding?');
+        }
+    </script>
+
+    <!-- Doughnut Chart Script -->
+    <script>
+        const ctx = document.getElementById('weddingChart').getContext('2d');
+        const weddingChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Completed', 'Incomplete', 'Cancelled'],
+                datasets: [{
+                    data: [70, 20, 10], // Replace with dynamic data if needed
+                    backgroundColor: ['#00FF7F', '#FFD700', '#FF4500'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                cutout: '70%',
+                plugins: {
+                    legend: { display: false }
+                }
+            }
+        });
+    </script>
+}

@@ -1,0 +1,286 @@
+﻿@* @model WeddingPlanner_APIConsume.Models.SignupModel
+@{
+    Layout = "~/Views/Shared/_Layout_Signup.cshtml";
+}
+
+<main>
+    <div class="container">
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger">
+                @TempData["ErrorMessage"]
+            </div>
+        }
+        <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+                        <div class="d-flex justify-content-center py-4">
+                            <a class="logo d-flex align-items-center w-auto">
+                                <img src="~/assets/img/logo.png" alt="">
+                                <span class="d-none d-lg-block">Wedding Planner</span>
+                            </a>
+                        </div><!-- End Logo -->
+
+                        <div class="card mb-3">
+
+                            <div class="card-body">
+
+                                <div class="pt-4 pb-2">
+                                    <h5 class="card-title text-center pb-0 fs-4">Create an Account</h5>
+                                    <p class="text-center small">Enter your personal details to create account</p>
+                                </div>
+
+                                <form class="row g-3 needs-validation" asp-controller="LoginSignup" asp-action="SignupSave" method="post" novalidate>
+                                    <div class="col-12">
+                                        <label for="yourName" class="form-label"><span class="text-danger">*</span>User Name</label>
+                                        <input type="text" asp-for="UserName" class="form-control" id="yourName">
+                                        <span class="text-danger" asp-validation-for="UserName"></span>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label for="yourPassword" class="form-label"><span class="text-danger">*</span>Password</label>
+                                        <div class="input-group">
+                                            <input type="password" asp-for="Password" class="form-control" id="yourPassword">
+                                            <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                                <i class="bi bi-eye"></i>
+                                            </button>
+                                        </div>
+                                        <span class="text-danger" asp-validation-for="Password"></span>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label for="yourEmail" class="form-label"><span class="text-danger">*</span>Email</label>
+                                        <input type="email" asp-for="Email" class="form-control" id="yourEmail">
+                                        <span class="text-danger" asp-validation-for="Email"></span>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label for="yourEmail" class="form-label"><span class="text-danger">*</span>Phone Number</label>
+                                        <input type="number" asp-for="PhoneNumber" class="form-control" id="yourPhoneNumber">
+                                        <span class="text-danger" asp-validation-for="PhoneNumber"></span>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label for="yourEmail" class="form-label"><span class="text-danger">*</span>Address</label>
+                                        <input type="text" asp-for="Address" class="form-control" id="yourEmail">
+                                        <span class="text-danger" asp-validation-for="Address"></span>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-check">
+                                            <input class="form-check-input" name="terms" type="checkbox" id="acceptTerms" required>
+                                            <label class="form-check-label" for="acceptTerms" style="color: #8d6e63;">
+                                                I agree to 
+                                                <a href="#" style="color;">Terms of Service</a>,
+                                                <a href="#" style="color;">Privacy Policy</a> and
+                                                <a href="#" style="color;">Content Policies</a>
+                                            </label>
+                                            <div class="invalid-feedback">You must agree before submitting.</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <button class="btn btn-primary w-100" type="submit" id="createAccountBtn" disabled>Create Account</button>
+                                    </div>
+                                    <div class="col-12">
+                                        <p class="small mb-0">Already have an account? <a asp-controller="LoginSignup" asp-action="Login">Log in</a></p>
+                                    </div>
+                                </form>
+
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+</main><!-- End #main -->
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        // Show/Hide Password Toggle
+        document.getElementById('togglePassword').addEventListener('click', function () {
+            var passwordInput = document.getElementById('yourPassword');
+            var icon = this.querySelector('i');
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                icon.classList.remove("bi-eye");
+                icon.classList.add("bi-eye-slash");
+            } else {
+                passwordInput.type = "password";
+                icon.classList.remove("bi-eye-slash");
+                icon.classList.add("bi-eye");
+            }
+        });
+    </script>
+<script>
+    document.getElementById('acceptTerms').addEventListener('change', function () {
+        document.getElementById('createAccountBtn').disabled = !this.checked;
+    });
+</script>
+} *@
+@model WeddingPlanner_APIConsume.Models.SignupModel
+@{
+    Layout = "~/Views/Shared/_Layout_Signup.cshtml";
+}
+<style>
+    body {
+        background: #f4f7f9;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .signup-container {
+        background: #fff;
+        border-radius: 8px;
+        padding: 2rem;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        margin: 5% auto;
+    }
+
+        .signup-container h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+    .form-group {
+        margin-bottom: 1.2rem;
+    }
+
+    .form-control {
+        border-radius: 4px;
+        padding: 0.6rem 1rem;
+        border: 1px solid #ccc;
+    }
+
+    .btn-primary {
+        background-color: #ff9f1c;
+        border: none;
+        border-radius: 4px;
+        padding: 0.7rem;
+    }
+
+        .btn-primary:hover {
+            background-color: #e08816;
+        }
+
+    .error {
+        color: #dc3545;
+        font-size: 0.85rem;
+    }
+
+    a {
+        color: #ff9f1c;
+    }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+    .checkbox-label {
+        font-size: 0.9rem;
+        color: #666;
+        margin-left: 0.25rem;
+    }
+</style>
+
+<main>
+    <div class="signup-container">
+        <h2>Create an Account</h2>
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger text-center">
+                @TempData["ErrorMessage"]
+            </div>
+        }
+        <form asp-controller="LoginSignup" asp-action="SignupSave" method="post" novalidate>
+            <div class="form-group">
+                <label for="yourName"><strong>User Name</strong></label>
+                <input type="text" asp-for="UserName" class="form-control" id="yourName">
+                <span class="error" asp-validation-for="UserName"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="yourPassword"><strong>Password</strong></label>
+                <div class="input-group">
+                    <input type="password" asp-for="Password" class="form-control" id="yourPassword">
+                    <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                        <i class="bi bi-eye"></i>
+                    </button>
+                </div>
+                <span class="error" asp-validation-for="Password"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="yourEmail"><strong>Email</strong></label>
+                <input type="email" asp-for="Email" class="form-control" id="yourEmail">
+                <span class="error" asp-validation-for="Email"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="yourPhoneNumber"><strong>Phone Number</strong></label>
+                <input type="number" asp-for="PhoneNumber" class="form-control" id="yourPhoneNumber">
+                <span class="error" asp-validation-for="PhoneNumber"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="yourAddress"><strong>Address</strong></label>
+                <input type="text" asp-for="Address" class="form-control" id="yourAddress">
+                <span class="error" asp-validation-for="Address"></span>
+            </div>
+
+            <div class="form-group">
+                <div class="form-check">
+                    <input class="form-check-input" name="terms" type="checkbox" id="acceptTerms" required>
+                    <label class="form-check-label checkbox-label" for="acceptTerms">
+                        I agree to <a href="#">Terms of Service</a>, <a href="#">Privacy Policy</a> and <a href="#">Content Policies</a>
+                    </label>
+                    <div class="invalid-feedback">You must agree before submitting.</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-primary w-100" type="submit" id="createAccountBtn" disabled>Create Account</button>
+            </div>
+
+            <div class="form-group text-center">
+                <p class="small mb-0">Already have an account? <a asp-controller="LoginSignup" asp-action="Login">Log in</a></p>
+            </div>
+        </form>
+    </div>
+</main>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        // Show/Hide Password Toggle
+        document.getElementById('togglePassword').addEventListener('click', function () {
+            var passwordInput = document.getElementById('yourPassword');
+            var icon = this.querySelector('i');
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                icon.classList.remove("bi-eye");
+                icon.classList.add("bi-eye-slash");
+            } else {
+                passwordInput.type = "password";
+                icon.classList.remove("bi-eye-slash");
+                icon.classList.add("bi-eye");
+            }
+        });
+        // Enable Create Account button when terms are accepted
+        document.getElementById('acceptTerms').addEventListener('change', function () {
+            document.getElementById('createAccountBtn').disabled = !this.checked;
+        });
+    </script>
+}

@@ -1,0 +1,246 @@
+﻿@* @model WeddingPlanner_APIConsume.Models.LoginModel
+@{
+    Layout = "~/Views/Shared/_Layout_Login.cshtml";
+}
+<main>
+    <div class="container">
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger">
+                @TempData["ErrorMessage"]
+            </div>
+        }
+        <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+                        <div class="d-flex justify-content-center py-4">
+                            <a class="logo d-flex align-items-center w-auto">
+                                <img src="~/assets/img/logo.png" alt="">
+                                <span class="d-none d-lg-block">Wedding Planner</span>
+                            </a>
+                        </div><!-- End Logo -->
+
+                        <div class="card mb-3">
+
+                            <div class="card-body">
+
+                                <div class="pt-4 pb-2">
+                                    <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
+                                    <p class="text-center small">Enter your username & password to login</p>
+                                </div>
+
+                                <form class="row g-3 needs-validation" asp-controller="LoginSignup" asp-action="LoginSave" method="post">
+                                    <div class="col-12 position-relative">
+                                        <label class="form-label">
+                                            <span class="text-danger">*</span>Role
+                                        </label>
+                                        <div class="d-flex align-items-center" style="gap: 15px;">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" asp-for="Role" id="roleAdmin" value="Admin">
+                                                <label class="form-check-label text-dark" for="roleAdmin">Admin</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" asp-for="Role" id="roleUser" value="User">
+                                                <label class="form-check-label text-dark" for="roleUser">User</label>
+                                            </div>
+                                        </div>
+                                        <span class="text-danger" asp-validation-for="Role"></span>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="yourUsername" class="form-label"><span class="text-danger">*</span>User Name</label>
+                                        <div class="row input-group has-validation ms-1">
+                                            <input type="text" asp-for="UserName" class="form-control" id="yourUserName">
+                                            <span asp-validation-for="UserName" class="text-danger"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label for="yourPassword" class="form-label">
+                                            <span class="text-danger">*</span>Password
+                                        </label>
+                                        <div class="input-group">
+                                            <input type="password" asp-for="Password" class="form-control" id="yourPassword">
+                                            <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                                <i class="bi bi-eye"></i>
+                                            </button>
+                                        </div>
+                                        <span asp-validation-for="Password" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-12">
+                                        <button class="btn btn-primary w-100" type="submit">Login</button>
+                                    </div>
+                                    <div class="col-12">
+                                        <p class="small mb-0">Don't have account? <a asp-controller="LoginSignup" asp-action="Signup">Create an account</a></p>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+</main><!-- End #main -->
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        document.getElementById('togglePassword').addEventListener('click', function () {
+            var passwordInput = document.getElementById('yourPassword');
+            var icon = this.querySelector('i');
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                icon.classList.remove("bi-eye");
+                icon.classList.add("bi-eye-slash");
+            } else {
+                passwordInput.type = "password";
+                icon.classList.remove("bi-eye-slash");
+                icon.classList.add("bi-eye");
+            }
+        });
+    </script>
+} *@
+@model WeddingPlanner_APIConsume.Models.LoginModel
+@{
+    Layout = "~/Views/Shared/_Layout_Login.cshtml";
+}
+<style>
+    body {
+        background: #f4f7f9;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .login-container {
+        background: #fff;
+        border-radius: 8px;
+        padding: 2rem;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        margin: 5% auto;
+    }
+
+        .login-container h2 {
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+    .form-group {
+        margin-bottom: 1.2rem;
+    }
+
+    .form-control {
+        border-radius: 4px;
+        padding: 0.6rem 1rem;
+        border: 1px solid #ccc;
+    }
+
+    .btn-primary {
+        background-color: #ff9f1c;
+        border: none;
+        border-radius: 4px;
+        padding: 0.7rem;
+    }
+
+        .btn-primary:hover {
+            background-color: #e08816;
+        }
+
+    .radio-label {
+        margin-right: 1rem;
+        color: #555;
+    }
+
+    .checkbox-label {
+        font-size: 0.9rem;
+        color: #666;
+        margin-left: 0.25rem;
+    }
+
+    .error {
+        color: #dc3545;
+        font-size: 0.85rem;
+    }
+
+    a {
+        color: #ff9f1c;
+    }
+
+        a:hover {
+            text-decoration: underline;
+        }
+</style>
+
+<main>
+    <div class="login-container">
+        <h2 class="text-center">Login</h2>
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger text-center">
+                @TempData["ErrorMessage"]
+            </div>
+        }
+        <form asp-controller="LoginSignup" asp-action="LoginSave" method="post">
+            <!-- Role Section -->
+            <div class="form-group">
+                <label><strong>Role</strong></label>
+                <div>
+                    <input type="radio" asp-for="Role" id="roleAdmin" value="Admin">
+                    <label for="roleAdmin" class="radio-label">Admin</label>
+                    <input type="radio" asp-for="Role" id="roleUser" value="User">
+                    <label for="roleUser" class="radio-label">User</label>
+                </div>
+                <span class="error" asp-validation-for="Role"></span>
+            </div>
+
+            <!-- Username Section -->
+            <div class="form-group">
+                <label for="yourUserName"><strong>User Name</strong></label>
+                <input type="text" asp-for="UserName" class="form-control" id="yourUserName">
+                <span class="error" asp-validation-for="UserName"></span>
+            </div>
+
+            <!-- Password Section -->
+            <div class="form-group">
+                <label for="yourPassword"><strong>Password</strong></label>
+                <input type="password" asp-for="Password" class="form-control" id="yourPassword">
+                <span class="error" asp-validation-for="Password"></span>
+            </div>
+
+            <!-- Show Password Toggle -->
+            <div class="form-group">
+                <input type="checkbox" id="showPasswordCheckbox" onclick="togglePassword()">
+                <label for="showPasswordCheckbox" class="checkbox-label">Show Password</label>
+            </div>
+
+            <!-- Login Button -->
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary w-100">Login</button>
+            </div>
+
+            <!-- Signup Link -->
+            <div class="form-group text-center">
+                <p>Don't have an account? <a asp-controller="LoginSignup" asp-action="Signup">Create account</a></p>
+            </div>
+        </form>
+    </div>
+</main>
+
+@section Scripts {
+    <script>
+        function togglePassword() {
+            var passwordInput = document.getElementById("yourPassword");
+            var checkbox = document.getElementById("showPasswordCheckbox");
+            passwordInput.type = checkbox.checked ? "text" : "password";
+        }
+    </script>
+}
+

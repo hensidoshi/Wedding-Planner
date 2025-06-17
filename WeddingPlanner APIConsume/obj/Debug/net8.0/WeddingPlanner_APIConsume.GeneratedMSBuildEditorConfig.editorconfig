@@ -1,0 +1,195 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = WeddingPlanner_APIConsume
+build_property.RootNamespace = WeddingPlanner_APIConsume
+build_property.ProjectDir = E:\ADVANCED .NET\WeddingPlanner_APIConsume\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = E:\ADVANCED .NET\WeddingPlanner_APIConsume
+build_property._RazorSourceGeneratorDebug = 
+
+[E:/ADVANCED .NET/WeddingPlanner_APIConsume/Views/Client/ClientAddEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50XENsaWVudEFkZEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ADVANCED .NET/WeddingPlanner_APIConsume/Views/Client/ClientList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50XENsaWVudExpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ADVANCED .NET/WeddingPlanner_APIConsume/Views/Customer/CustomerAddEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcQ3VzdG9tZXJBZGRFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ADVANCED .NET/WeddingPlanner_APIConsume/Views/Customer/CustomerList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcQ3VzdG9tZXJMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ADVANCED .NET/WeddingPlanner_APIConsume/Views/Dashboard/DashboardUi.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXERhc2hib2FyZFVpLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ADVANCED .NET/WeddingPlanner_APIConsume/Views/Expense/ExpenseAddEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhwZW5zZVxFeHBlbnNlQWRkRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ADVANCED .NET/WeddingPlanner_APIConsume/Views/Expense/ExpenseList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhwZW5zZVxFeHBlbnNlTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ADVANCED .NET/WeddingPlanner_APIConsume/Views/Feedback/FeedbackAddEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmVlZGJhY2tcRmVlZGJhY2tBZGRFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ADVANCED .NET/WeddingPlanner_APIConsume/Views/Feedback/FeedbackList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmVlZGJhY2tcRmVlZGJhY2tMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ADVANCED .NET/WeddingPlanner_APIConsume/Views/Guest/GuestAddEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3Vlc3RcR3Vlc3RBZGRFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ADVANCED .NET/WeddingPlanner_APIConsume/Views/Guest/GuestList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3Vlc3RcR3Vlc3RMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ADVANCED .NET/WeddingPlanner_APIConsume/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ADVANCED .NET/WeddingPlanner_APIConsume/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ADVANCED .NET/WeddingPlanner_APIConsume/Views/LoginSignup/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5TaWdudXBcTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ADVANCED .NET/WeddingPlanner_APIConsume/Views/LoginSignup/Signup.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5TaWdudXBcU2lnbnVwLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ADVANCED .NET/WeddingPlanner_APIConsume/Views/Panel/Admin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFuZWxcQWRtaW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ADVANCED .NET/WeddingPlanner_APIConsume/Views/Panel/User.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFuZWxcVXNlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ADVANCED .NET/WeddingPlanner_APIConsume/Views/Payment/PaymentAddEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF5bWVudFxQYXltZW50QWRkRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ADVANCED .NET/WeddingPlanner_APIConsume/Views/Payment/PaymentList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF5bWVudFxQYXltZW50TGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ADVANCED .NET/WeddingPlanner_APIConsume/Views/Shared/_Layout_Admin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRfQWRtaW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ADVANCED .NET/WeddingPlanner_APIConsume/Views/Shared/_Layout_Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRfTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ADVANCED .NET/WeddingPlanner_APIConsume/Views/Shared/_Layout_SignUp.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRfU2lnblVwLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ADVANCED .NET/WeddingPlanner_APIConsume/Views/Shared/_Layout_User.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRfVXNlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ADVANCED .NET/WeddingPlanner_APIConsume/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ADVANCED .NET/WeddingPlanner_APIConsume/Views/Task/TaskAddEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFza1xUYXNrQWRkRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ADVANCED .NET/WeddingPlanner_APIConsume/Views/Task/TaskList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFza1xUYXNrTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ADVANCED .NET/WeddingPlanner_APIConsume/Views/UserPanel/About.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclBhbmVsXEFib3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ADVANCED .NET/WeddingPlanner_APIConsume/Views/UserPanel/Contact.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclBhbmVsXENvbnRhY3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ADVANCED .NET/WeddingPlanner_APIConsume/Views/UserPanel/Event.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclBhbmVsXEV2ZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ADVANCED .NET/WeddingPlanner_APIConsume/Views/UserPanel/Family.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclBhbmVsXEZhbWlseS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ADVANCED .NET/WeddingPlanner_APIConsume/Views/UserPanel/Gallery.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclBhbmVsXEdhbGxlcnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ADVANCED .NET/WeddingPlanner_APIConsume/Views/UserPanel/Home.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclBhbmVsXEhvbWUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ADVANCED .NET/WeddingPlanner_APIConsume/Views/UserPanel/Story.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclBhbmVsXFN0b3J5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ADVANCED .NET/WeddingPlanner_APIConsume/Views/VendorBooking/VendorBookingAddEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVuZG9yQm9va2luZ1xWZW5kb3JCb29raW5nQWRkRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ADVANCED .NET/WeddingPlanner_APIConsume/Views/VendorBooking/VendorBookingList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVuZG9yQm9va2luZ1xWZW5kb3JCb29raW5nTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ADVANCED .NET/WeddingPlanner_APIConsume/Views/Vendor/VendorAddEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVuZG9yXFZlbmRvckFkZEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ADVANCED .NET/WeddingPlanner_APIConsume/Views/Vendor/VendorList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVuZG9yXFZlbmRvckxpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ADVANCED .NET/WeddingPlanner_APIConsume/Views/Wedding/WeddingAddEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2VkZGluZ1xXZWRkaW5nQWRkRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ADVANCED .NET/WeddingPlanner_APIConsume/Views/Wedding/WeddingList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2VkZGluZ1xXZWRkaW5nTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ADVANCED .NET/WeddingPlanner_APIConsume/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ADVANCED .NET/WeddingPlanner_APIConsume/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ADVANCED .NET/WeddingPlanner_APIConsume/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-r59peqfigs

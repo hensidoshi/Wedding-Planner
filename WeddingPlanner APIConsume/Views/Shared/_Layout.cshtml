@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Wedding Planner</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+          integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Favicons -->
+    <link href="~/assets/img/icon.jpg" rel="icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="~/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/quill/quill.snow.css" rel="stylesheet">
+    <link href="~/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+    <link href="~/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="~/assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="~/assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top d-flex align-items-center justify-content-between">
+        <div class="logo-container">
+            <a class="logo" asp-controller="Dashboard" asp-action="DashboardUi">
+                <span style="color: #3a5a40;">Admin Panel</span>
+            </a>
+        </div>
+        <div class="header-actions">
+            <a asp-controller="LoginSignup" asp-action="Logout" class="btn btn-primary m-2">
+                <i class="bi bi-box-arrow-right" style="color: white;"></i>
+                <span>Sign out</span>
+            </a>
+        </div>
+    </header>
+    <!-- End Header -->
+    <!-- ======= Sidebar ======= -->
+    <aside id="sidebar" class="sidebar" style="width: 17rem;">
+        <ul class="sidebar-nav" id="sidebar-nav">
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-controller="Client" asp-action="ClientList">
+                    <i class="bi bi-people" style="color: #a3b18a;"></i><span class="ms-2">Client</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-controller="Customer" asp-action="CustomerList">
+                    <i class="bi bi-person-lines-fill" style="color: #a3b18a;"></i><span class="ms-2">Customer</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-controller="Expense" asp-action="ExpenseList">
+                    <i class="bi bi-cash-stack" style="color: #a3b18a;"></i><span class="ms-2">Expense</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-controller="Guest" asp-action="GuestList">
+                    <i class="bi bi-card-list" style="color: #a3b18a;"></i><span class="ms-2">Guest</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-controller="Payment" asp-action="PaymentList">
+                    <i class="bi bi-credit-card" style="color: #a3b18a;"></i><span class="ms-2">Payment</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-controller="Feedback" asp-action="FeedbackList">
+                    <i class="bi bi-star-fill" style="color: #a3b18a;"></i><span class="ms-2">Feedback</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-controller="Task" asp-action="TaskList">
+                    <i class="bi bi-check2-circle" style="color: #a3b18a;"></i><span class="ms-2">Task</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-controller="VendorBooking" asp-action="VendorBookingList">
+                    <i class="bi bi-calendar-check" style="color: #a3b18a;"></i><span class="ms-2">VendorBooking</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-controller="Vendor" asp-action="VendorList">
+                    <i class="bi bi-shop" style="color: #a3b18a;"></i><span class="ms-2">Vendor</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-controller="Wedding" asp-action="WeddingList">
+                    <i class="bi bi-gem" style="color: #a3b18a;"></i><span class="ms-2">Wedding</span>
+                </a>
+            </li>
+        </ul>
+    </aside>
+    <!-- End Sidebar -->
+ 
+    <div class="container-fluid">
+        <main role="main" class="main p-3" id="main" style="margin-left: 18rem;">
+            @RenderBody()
+        </main>
+    </div>
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <!-- jQuery Validation Plugin -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
+
+    <!-- jQuery Unobtrusive Validation (to bridge ASP.NET Core MVC validation with jQuery Validate) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="~/assets/js/main.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

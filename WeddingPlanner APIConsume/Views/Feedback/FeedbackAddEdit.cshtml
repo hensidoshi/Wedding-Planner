@@ -1,0 +1,150 @@
+﻿@model WeddingPlanner_APIConsume.Models.FeedbacksModel
+
+<!-- Confirmation Modal -->
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmModalLabel">Confirm @((Model.FeedbackID == null) ? "Submission" : "Update")</h5>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to @((Model.FeedbackID == null) ? "submit this feedback?" : "update this feedback?")
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-primary" id="confirmYes">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Success Alert -->
+<div class="alert alert-success alert-dismissible fade show" role="alert" id="successAlert" style="display:none;">
+    <i class="bi bi-check-circle" style="margin-right: 10px;"></i>
+    <span id="successMessage"></span>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">@((Model.FeedbackID == null) ? "Add Feedback" : "Edit Feedback")</h5>
+
+        <!-- Feedback Form -->
+        <form asp-controller="Feedback" asp-action="Save" method="post" id="feedbackForm">
+            <div class="row mb-3">
+                <input type="hidden" asp-for="FeedbackID" />
+                <label for="clientID" class="col-sm-2 col-form-label"><span class="text-danger">*</span>Client ID</label>
+                <div class="col-sm-10">
+                    <select class="form-control" asp-for="ClientID" asp-items="@(new SelectList(ViewBag.ClientList, "ClientID", "ClientFullName"))">
+                        <option value="">Select Client</option>
+                    </select>
+                    <span asp-validation-for="ClientID" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="weddingID" class="col-sm-2 col-form-label"><span class="text-danger">*</span>Wedding ID</label>
+                <div class="col-sm-10">
+                    <select class="form-control" asp-for="WeddingID" asp-items="@(new SelectList(ViewBag.WeddingList, "WeddingID", "WeddingDate"))">
+                        <option value="">Select Wedding</option>
+                    </select>
+                    <span asp-validation-for="WeddingID" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label"><span class="text-danger">*</span> Rating</label>
+                <div class="col-sm-10">
+                    <div class="rating">
+                        <input type="radio" id="star5" name="Rating" value="5" @(Model.Rating == 5 ? "checked" : "") />
+                        <label for="star5" class="star">&#9733;</label>
+
+                        <input type="radio" id="star4" name="Rating" value="4" @(Model.Rating == 4 ? "checked" : "") />
+                        <label for="star4" class="star">&#9733;</label>
+
+                        <input type="radio" id="star3" name="Rating" value="3" @(Model.Rating == 3 ? "checked" : "") />
+                        <label for="star3" class="star">&#9733;</label>
+
+                        <input type="radio" id="star2" name="Rating" value="2" @(Model.Rating == 2 ? "checked" : "") />
+                        <label for="star2" class="star">&#9733;</label>
+
+                        <input type="radio" id="star1" name="Rating" value="1" @(Model.Rating == 1 ? "checked" : "") />
+                        <label for="star1" class="star">&#9733;</label>
+                    </div>
+                    <span asp-validation-for="Rating" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label"><span class="text-danger">*</span>Comments</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" asp-for="Comments"></textarea>
+                    <span asp-validation-for="Comments" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label"><span class="text-danger">*</span>Feedback Date</label>
+                <div class="col-sm-10">
+                    <input type="date" class="form-control" asp-for="FeedbackDate">
+                    <span asp-validation-for="FeedbackDate" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+                    <button type="button" class="btn btn-success" id="confirmSubmit">
+                        @((Model.FeedbackID == null) ? "Add" : "Edit")
+                    </button>
+                    <a class="btn btn-danger" asp-controller="Feedback" asp-action="FeedbackList">Back</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial.cshtml");
+    }
+
+    <script>
+        $(document).ready(function () {
+            // Show confirmation modal on submit button click
+            $('#confirmSubmit').on('click', function () {
+                $('#confirmModal').modal('show');
+            });
+
+            // If "Yes" is clicked, submit the form
+            $('#confirmYes').on('click', function (e) {
+                e.preventDefault();
+                var isValid = $('#feedbackForm').valid();
+                if (isValid) {
+                    $('#feedbackForm').submit();
+                }
+            });
+
+            // Handle form submission
+            $('#feedbackForm').on('submit', function (e) {
+                e.preventDefault();
+                $.post($(this).attr('action'), $(this).serialize(), function (response) {
+                    $('#confirmModal').modal('hide');
+                    if ($('input[name="FeedbackID"]').val() == 0) {
+                        $('#successMessage').text('Feedback added successfully!');
+                        $('#feedbackForm')[0].reset();
+                    } else {
+                        $('#successMessage').text('Feedback updated successfully!');
+                    }
+                    $('#successAlert').show();
+                    setTimeout(function () {
+                        $('#successAlert').hide();
+                        if ($('input[name="FeedbackID"]').val() == 0) {
+                            location.reload();
+                        }
+                    }, 2000);
+                }).fail(function () {
+                    alert('Error occurred while submitting the form.');
+                });
+            });
+        });
+    </script>
+}
